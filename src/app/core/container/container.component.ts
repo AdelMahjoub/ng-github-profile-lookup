@@ -59,8 +59,16 @@ export class ContainerComponent implements OnInit, OnDestroy {
     this.profileSubscription = this.profileService.getProfile(term)
       .subscribe(
         (data: any) => {
-          this.profile = data;
-          this.updateRepos(term);
+          this.profile = false
+          // - workaround - 
+          // set profile to false and delay by 10ms 
+          // to trigger animation in profile.component
+          setTimeout(() => {
+            this.profile = data;
+            setTimeout(() => {
+              this.updateRepos(term);
+            }, 10)  
+          }, 10);
         },
         (error: Response) => {
           this.profile = false
@@ -76,6 +84,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   this.profileSubscription = this.profileService.getRepos(term)
     .subscribe(
       (data: any) => {
+        this.repos = false
         this.repos = data;
       },
       (error: Response) => {

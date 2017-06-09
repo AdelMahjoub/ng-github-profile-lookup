@@ -1,4 +1,4 @@
-<div *ngIf="profile">
+<div *ngIf="profile" [@slideIn]>
   <!-- profile -->
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -57,7 +57,7 @@
     </div>
   </div>
   <!-- repos -->
-  <div class="panel panel-default" *ngIf="repos">
+  <div class="panel panel-default" *ngIf="repos" [@slideUp]>
     <div class="panel-heading">
       <h3 class="panel-title">Repos</h3>
     </div>
