@@ -88,3 +88,11 @@
     </div>
   </div>
 </div>
+
+<div class="row" *ngIf="!userFound && profile !== undefined" [@slideIn]>
+  <div class="col-xs-12 col-md-12">
+    <div class="alert alert-danger">
+      <strong>Profile not found.</strong>
+    </div>
+  </div>
+</div>

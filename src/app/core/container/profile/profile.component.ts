@@ -1,7 +1,7 @@
 import { 
   Component,  
   Input} from '@angular/core';
-  
+
 import { 
   trigger, 
   style, 
@@ -46,7 +46,8 @@ export class ProfileComponent {
 
   @Input() profile: any;
   @Input() repos: any;
+  @Input() userFound: boolean;
 
   constructor() { }
-  
+
 }

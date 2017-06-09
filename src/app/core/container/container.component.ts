@@ -17,6 +17,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
   profile: any;      // username(from search field) github profile
   repos: any;        // username(from search field) github repos
+  found = false;
   previousTerm = ''; // previous searched term
 
   profileSubscription: Subscription;   
@@ -59,7 +60,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
     this.profileSubscription = this.profileService.getProfile(term)
       .subscribe(
         (data: any) => {
-          this.profile = false
+          this.profile = false;
+          this.found = true;
           // - workaround - 
           // set profile to false and delay by 10ms 
           // to trigger animation in profile.component
@@ -71,7 +73,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
           }, 10);
         },
         (error: Response) => {
-          this.profile = false
+          this.profile = false;
+          this.found = false;
         }
       )
   }
@@ -88,7 +91,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
         this.repos = data;
       },
       (error: Response) => {
-        this.repos = false
+       
       }
     )
   }
