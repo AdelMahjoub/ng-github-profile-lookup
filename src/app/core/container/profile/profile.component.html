@@ -1,0 +1,90 @@
+<div *ngIf="profile">
+  <!-- profile -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{profile.name}}</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <img 
+            [src]="profile.avatar_url" 
+            alt="user profile" 
+            class="profile-img img-thumbnail">
+          <a 
+            [href]="profile.html_url" 
+            target="_blank"
+            class="btn btn-default btn-block">
+            View Profile
+          </a>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="stats">
+            <span class="label label-primary">
+              {{profile.public_repos}} Public Repos
+            </span>
+            <span class="label label-success">
+              {{profile.public_gists}} Public Gists
+            </span>
+            <span class="label label-info">
+              {{profile.followers}} Followers
+            </span>
+            <span class="label label-warning">
+              {{profile.following}} Following
+            </span>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Username: </strong>{{profile.login}}
+            </li>
+            <li class="list-group-item">
+              <strong>Location: </strong>{{profile.location}}
+            </li>
+            <li class="list-group-item">
+              <strong>Email: </strong>{{profile.email}}
+            </li>
+            <li class="list-group-item">
+              <strong>
+                Blog: <a [href]="profile.blog" target="_blank">{{profile.blog}}</a>
+              </strong>
+            </li>
+            <li class="list-group-item">
+              <strong>Member since: </strong>{{profile.created_at | date}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- repos -->
+  <div class="panel panel-default" *ngIf="repos">
+    <div class="panel-heading">
+      <h3 class="panel-title">Repos</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div *ngFor="let repo of repos">
+            <div class="row">
+              <div class="col-md-9 col-sm-9">
+                <h4>
+                  <a [href]="repo.html_url" target="_blank">{{repo.name}}</a>
+                </h4>
+                <p>{{repo.description}}</p>
+              </div>
+              <div class="col-md-3 col-sm-3">
+                <span class="label label-primary">
+                  {{repo.watchers}} Watchers
+                </span>
+                <span class="label label-success">
+                  {{repo.forks}} Forks
+                </span>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

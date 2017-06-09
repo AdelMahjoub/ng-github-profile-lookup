@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="page-header"></div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a 
+            class="navbar-brand"
+            style="cursor: pointer;">{{'Github profile lookup' | titlecase}}</a>
+        </div>
+
+        <form class="navbar-form navbar-right">
+          <div class="form-group">
+            <div class="input-group">
+              <!-- Search field -->
+              <input 
+              type="text" 
+              class="form-control" 
+              placeholder="Search"
+              (keyup.enter)="emitSearchTerm()"
+              #searchField>
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </nav>
+  <div class="page-header"></div>
+</div>
